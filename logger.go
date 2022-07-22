@@ -46,6 +46,14 @@ func (l *Logger) Debugf(format string, v ...interface{}) {
 	l.writef(LevelDebug, format, v...)
 }
 
+func (l *Logger) Warn(v ...interface{}) {
+	l.write(LevelWarn, v)
+}
+
+func (l *Logger) Warnf(format string, v ...interface{}) {
+	l.writef(LevelWarn, format, v...)
+}
+
 func (l *Logger) Error(v ...interface{}) {
 	l.write(LevelError, v)
 }
@@ -81,15 +89,15 @@ func (l *Logger) writef(level LogLevel, format string, v ...interface{}) {
 
 	var timestamp = fmt.Sprintf("%s", time.Now().Format("2006-01-02 15:04:05"))
 
-	var prefix = fmt.Sprintf("%s%s: [%s]%s ", level.ColorStart(), timestamp, level.String(), level.ColorEnd())
+	var line = fmt.Sprintf("%s%s: [%s] %s%s\n", level.ColorStart(), timestamp, level.String(), fmt.Sprintf(format, v...), level.ColorEnd())
 	if !l.Colors {
-		prefix = fmt.Sprintf("%s: [%s] ", timestamp, level.String())
+		line = fmt.Sprintf("%s: [%s] %s\n", timestamp, level.String(), fmt.Sprintf(format, v...))
 	}
 
 	// Write the log entry followed by a newline.
 	if l.Level == LevelError || l.Level == LevelFatal {
-		l.ErrWriter.Write([]byte(prefix + fmt.Sprintf(format+"\n", v...)))
+		l.ErrWriter.Write([]byte(line))
 	} else {
-		l.Writer.Write([]byte(prefix + fmt.Sprintf(format+"\n", v...)))
+		l.Writer.Write([]byte(line))
 	}
 }

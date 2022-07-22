@@ -19,6 +19,7 @@ func main() {
 
 	yal.Info("This is a info message")
 	yal.Debug("This is a debug message")
+	yal.Warn("This is a warn message")
 	yal.Error("This is a error message")
 
 	fmt.Println("\nGlobal Logger: No Color")
@@ -26,6 +27,7 @@ func main() {
 
 	yal.Info("This is a info message")
 	yal.Debug("This is a debug message")
+	yal.Warn("This is a warn message")
 	yal.Error("This is a error message")
 
 	fmt.Println("\nGlobal Logger: Pretty Print")
