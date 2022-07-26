@@ -8,6 +8,7 @@ const (
 	LevelWarn
 	LevelError
 	LevelFatal
+	LevelDisable
 )
 
 var Level = LogLevel(0)
@@ -19,13 +20,13 @@ func (l LogLevel) String() string {
 	case 1:
 		return "INFO"
 	case 2:
-		return "WARNING"
+		return "WARN"
 	case 3:
 		return "ERROR"
 	case 4:
 		return "FATAL"
 	}
-	return ""
+	return "DISABLE"
 }
 
 func (l LogLevel) ColorStart() string {

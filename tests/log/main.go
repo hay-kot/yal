@@ -22,7 +22,16 @@ func main() {
 	yal.Warn("This is a warn message")
 	yal.Error("This is a error message")
 
+	fmt.Println("\nGlobal Logger: Disabled")
+	yal.Log.Level = yal.LevelDisable
+
+	yal.Info("This is a info message")
+	yal.Debug("This is a debug message")
+	yal.Warn("This is a warn message")
+	yal.Error("This is a error message")
+
 	fmt.Println("\nGlobal Logger: No Color")
+	yal.Log.Level = yal.LevelDebug
 	yal.Log.Colors = false
 
 	yal.Info("This is a info message")
@@ -33,7 +42,7 @@ func main() {
 	fmt.Println("\nGlobal Logger: Pretty Print")
 	yal.Log.Colors = true
 
-	yal.Debug(pretty.Struct(Test{"John", 30}))
-	yal.Debug(pretty.Slice([]Test{{"John", 30}, {"Jane", 25}}))
+	yal.Info(pretty.Struct(Test{"John", 30}))
+	yal.Info(pretty.Slice([]Test{{"John", 30}, {"Jane", 25}}))
 
 }
