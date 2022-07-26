@@ -42,7 +42,7 @@ func main() {
 	yal.Info("This is a info message")
 	yal.Debug("This is a debug message")
 	yal.Error("This is a error message")
-    yal.Fatal("This is a fatal message")
+	yal.Fatal("This is a fatal message")
 }
 
 ```
