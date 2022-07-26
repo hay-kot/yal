@@ -23,7 +23,7 @@ If you do end up using this, you should vendor, or copy it into your code base.
 
 ### Singleton Logger
 
-The library can be used as an easy drop in logger that acts as a singleton. There are top level methods for Info, Debug, Error, and Fatal logging that call the top level Log variable which is an instance of the Logger struct.
+The library can be used as an easy drop in logger that acts as a singleton. There are top level methods for Info, Debug, Error, Warn, and Fatal logging that call the top level Log variable which is an instance of the Logger struct.
 
 ```go
 package main
