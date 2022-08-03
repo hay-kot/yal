@@ -64,12 +64,12 @@ func (l *Logger) Errorf(format string, v ...interface{}) {
 
 func (l *Logger) Fatal(v ...interface{}) {
 	l.write(LevelFatal, v)
-	panic(v)
+	os.Exit(1)
 }
 
 func (l *Logger) Fatalf(format string, v ...interface{}) {
 	l.writef(LevelFatal, format, v...)
-	panic(v)
+	os.Exit(1)
 }
 
 func (l *Logger) write(level LogLevel, v []interface{}) {
